@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h1>
+			ODIN PROJECT DOM EXERCISE
+		</h1>
+		<div id="container">
+
+		</div>
+	</body>
+
+	<script>
+		const container = document.querySelector('#container');
+
+		const content = document.createElement('div');
+		const para = document.createElement('p');
+		const head3 = document.createElement('h3');
+		const divParent = document.createElement('div');
+		const head1 = document.createElement('h1');
+		const para2 = document.createElement('p');
+		divParent.appendChild(head1);
+		divParent.appendChild(para2);
+		content.classList.add('content');
+		content.textContent = 'This is the glorious text-content!';
+		para.textContent = 'Hey I\'m red!';
+		para.style.color = 'red';
+		head3.textContent = 'I\'m a blue H3!'
+		head3.style.color = "blue";
+		divParent.style.cssText = 'background-color: pink; border-style: solid;';
+		head1.textContent = 'I\'m inside a div'
+		para2.textContent = 'ME TOO!!!!!!'
+
+		container.appendChild(content);	
+		container.appendChild(para);
+		container.appendChild(head3);
+		container.appendChild(divParent);
+	</script>
+</html>

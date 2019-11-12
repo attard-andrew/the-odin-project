@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<script>
+
+
+let playerScore = 0
+let computerScore = 0
+
+// I'm setting up this variable to generate a random index to select a random value from a list ('rock', 'paper', 'scissors'). I could just build this into the index, but I prefer to do it in smaller chunks like this while I'm learning.  Not sure what the actual best practice is yet.  The Math.random function is what generates a random floating point number between 0 & 1, multiplying it by 3 will increase the upper limit, and passing it to the .floor method will round it DOWN (which is why it returns 0-2 instead of 0-3) to the nearest whole number
+function computerPlay() {
+    let randomIndex = Math.floor(Math.random() * 3)
+    let rockPaperScissors = ['rock', 'paper', 'scissors']
+    let computerSelection = rockPaperScissors[randomIndex]
+    return computerSelection
+}
+
+function playRound(computerSelection) {
+    let playerSelection = prompt('Choose Rock, Paper, or Scissors', 'Hurry up and pick one, bitch')
+    let result = ' '
+    if (playerSelection.toLowerCase() == 'rock' && computerSelection == 'scissors') {
+        playerScore += 1
+        result = console.log('You win, ' + playerSelection + ' beats ' + computerSelection + '! Player Score: ' + playerScore + ' Computer Score: ' + computerScore)
+}   else if (playerSelection.toLowerCase() == 'paper' && computerSelection == 'rock') {
+        playerScore += 1
+        result = console.log('You win, ' + playerSelection + ' beats ' + computerSelection + '! Player Score: ' + playerScore + ' Computer Score: ' + computerScore)
+}   else if (playerSelection.toLowerCase() == 'scissors' && computerSelection == 'paper') {
+        playerScore += 1
+        result = console.log('You win, ' + playerSelection + ' beats ' + computerSelection + '! Player Score: ' + playerScore + ' Computer Score: ' + computerScore)
+}   else if (playerSelection.toLowerCase() == computerSelection) {
+        playerScore += 1
+        result = console.log('It\'s a draw! Player Score: ' + playerScore + ' Computer Score: ' + computerScore)
+}   else {
+        computerScore += 1
+        result = console.log('You lose, ' + computerSelection + ' beats ' + playerSelection + '! Player Score: ' + playerScore + ' Computer Score: ' + computerScore)
+        
+}
+    return result
+}
+
+// My frist go at this - basically what I'm trying to do is say - repeat the round function 5 times, this should update the scores, then evaluate them to determine who the winner is.  One thing to note is that the original playRound function accepts the playerSelection as an input parameter, so that variable is defined outside of the function.  However, since the for loop is going to repeat the playRound function, I believe I need to include the user prompt in this - otherwise - the user input would remain the same for all 5 rounds
+function playGame() {
+    for (i = 0; i < 5; i++) {
+        playRound(computerPlay())
+    }
+    if (playerScore > computerScore) {
+        console.log('Congratulations - you beat the computer with a score of ' + playerScore + ' to ' + computerScore + '!')
+    }
+    else {
+        console.log('You suck at rock paper scissors - you lost with a score of ' + playerScore + 'to' + computerScore + '!')
+    }
+}
+
+
+playGame()
+
+</script>
+
+</html>
